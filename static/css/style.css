@@ -1,0 +1,161 @@
+:root
+{
+    --sky-high: #313359;
+    --sky-low: #e27137;
+    --water-high: #ba6b5e;
+    --water-low: #5c476e;
+    --sun: rgb(255, 203, 148);
+}
+
+body
+{
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    background: var(--water-low);
+}
+
+
+.paralax-element
+{
+    position: absolute;
+    left:0;
+    top:0;
+    bottom: 0;
+    display: block;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    transition: all 1s;
+}
+
+#paralax-1
+{
+    top:70vh;
+    height: 30vh;
+    background: linear-gradient(180deg, var(--water-high), var(--water-low));
+    z-index: -1;
+}
+
+#paralax-2
+{
+    height: 100vh;
+    background: url('../images/paralax-2.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: -1;
+    animation: ducks 120s linear 0s infinite;
+}
+
+@keyframes ducks {
+    0% {margin-left:45vw;transform: scaleX(1);}  
+    49% {margin-left:-70vw;transform: scaleX(1);}
+    50% {margin-left:-70vw;transform: scaleX(-1);}
+    99% {margin-left:70vw;transform: scaleX(-1);}
+    100% {margin-left:70vw;transform: scaleX(1);}
+}
+
+#paralax-3
+{
+    background: url('../images/paralax-3.svg');
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    z-index: -1;
+}
+
+#paralax-4
+{
+    background: url('../images/paralax-4.svg');
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    z-index: -2;
+}
+
+#paralax-5
+{
+    background: url('../images/paralax-5.svg');
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    z-index: -3;
+}
+
+#paralax-6
+{
+    background: url('../images/paralax-6.svg');
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    z-index: -4;
+}
+
+#paralax-7
+{
+    background: url('../images/paralax-7.svg');
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    z-index: -5;
+    animation: clouds 60s cubic-bezier(.46,.03,.52,.96) 0s infinite;
+}
+
+@keyframes clouds {
+    0% {margin-left:0vw;}  
+    50% {margin-left:-20vw;}
+    100% {margin-left:0vw;}
+}
+
+#paralax-9
+{
+    height: 70vh;
+    background: linear-gradient(180deg, var(--sky-high), var(--sky-low));
+    z-index: -6;
+}
+
+#paralax-8
+{
+    top:5vh;
+    left:50vh;
+    width: 50vh;
+    height: 50vh;
+}
+
+#paralax-8 > div
+{
+    position: absolute;
+    left:0;
+    right:0;
+    border-radius: 100%;
+    background: var(--sun);
+    margin: auto;
+    top: 50%;
+    transform: translate(0,-50%);
+}
+
+.paralax-8-sun:nth-child(1) 
+{ 
+    width: 7vh;
+    height: 7vh;
+    opacity: 0.7;
+}
+
+.paralax-8-sun:nth-child(2) 
+{ 
+    width: 12vh;
+    height: 12vh;
+    opacity: 0.05;
+}
+
+.paralax-8-sun:nth-child(3) 
+{ 
+    width: 18vh;
+    height: 18vh;
+    opacity: 0.05;
+}
+
+
+.paralax-8-sun:nth-child(4) 
+{ 
+    width: 24vh;
+    height: 24vh;
+    opacity: 0.03;
+}
