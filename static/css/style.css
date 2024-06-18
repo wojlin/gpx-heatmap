@@ -5,6 +5,10 @@
     --water-high: #ba6b5e;
     --water-low: #5c476e;
     --sun: rgb(255, 203, 148);
+
+    --ratio: 0;
+    --gap: 5px;
+    --filter: brightness(0.75) hue-rotate(20deg);
 }
 
 body
@@ -22,8 +26,7 @@ body
 {
     position: absolute;
     left:0;
-    top:0;
-    bottom: 0;
+    right: 0;
     display: block;
     margin: 0;
     padding: 0;
@@ -31,69 +34,66 @@ body
     transition: all 1s;
 }
 
+
+
 #paralax-1
 {
-    top:70vh;
-    height: 30vh;
+    top:50vh;
+    height: 50vh;
     background: linear-gradient(180deg, var(--water-high), var(--water-low));
     z-index: -1;
 }
 
-#paralax-2
-{
-    height: 100vh;
-    background: url('../images/paralax-2.svg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    z-index: -1;
-    animation: ducks 120s linear 0s infinite;
+#paralax-2 {
+	width: 20%;
+	z-index: -1;
+	animation: ducks 120s linear 0s infinite;
+	top: 80vh;
 }
 
 @keyframes ducks {
-    0% {margin-left:45vw;transform: scaleX(1);}  
-    49% {margin-left:-70vw;transform: scaleX(1);}
-    50% {margin-left:-70vw;transform: scaleX(-1);}
-    99% {margin-left:70vw;transform: scaleX(-1);}
-    100% {margin-left:70vw;transform: scaleX(1);}
+    0% {margin-left:100vw;transform: scaleX(1);}  
+    49% {margin-left:-20vw;transform: scaleX(1);}
+    50% {margin-left:-20vw;transform: scaleX(-1);}
+    99% {margin-left:100vw;transform: scaleX(-1);}
+    100% {margin-left:100vw;transform: scaleX(1);}
 }
 
 #paralax-3
 {
     background: url('../images/paralax-3.svg');
-    background-size: 100% auto;
-    background-repeat: no-repeat;
     z-index: -1;
+    width: 70%;
+    top:auto;
+    left:auto;
+    bottom: 47vh;
 }
 
 #paralax-4
 {
     background: url('../images/paralax-4.svg');
-    background-size: 100% auto;
-    background-repeat: no-repeat;
     z-index: -2;
+    top:40vh;
 }
 
 #paralax-5
 {
     background: url('../images/paralax-5.svg');
-    background-size: 100% auto;
-    background-repeat: no-repeat;
     z-index: -3;
+    top:38vh;
 }
 
 #paralax-6
 {
     background: url('../images/paralax-6.svg');
-    background-size: 100% auto;
-    background-repeat: no-repeat;
     z-index: -4;
+    top:33vh;
 }
 
 #paralax-7
 {
+    top: 25vh;
     background: url('../images/paralax-7.svg');
-    background-size: 100% auto;
-    background-repeat: no-repeat;
     z-index: -5;
     animation: clouds 60s cubic-bezier(.46,.03,.52,.96) 0s infinite;
 }
@@ -104,19 +104,12 @@ body
     100% {margin-left:0vw;}
 }
 
-#paralax-9
-{
-    height: 70vh;
-    background: linear-gradient(180deg, var(--sky-high), var(--sky-low));
-    z-index: -6;
-}
 
 #paralax-8
 {
-    top:5vh;
-    left:50vh;
-    width: 50vh;
-    height: 50vh;
+    top:20vh;
+    left:-20vw;
+    position: relative;
 }
 
 #paralax-8 > div
@@ -158,4 +151,57 @@ body
     width: 24vh;
     height: 24vh;
     opacity: 0.03;
+}
+
+#paralax-9
+{
+    height: 50vh;
+    background: linear-gradient(180deg, var(--sky-high), var(--sky-low));
+    z-index: -6;
+}
+
+
+
+#bg,
+#base,
+#reflect {
+  content: "";
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url(../images/paralax.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+#bg {
+  filter: var(--filter);
+}
+#reflect {
+  filter: url(#filter) var(--filter);
+  transform-origin: center;
+    z-index: 2;
+  transform: scale3d(1.1, -1.1, 1);
+}
+#base {
+  mask-image: linear-gradient(
+    to bottom,
+    white,
+    white calc(var(--ratio) - var(--gap)),
+    rgba(255, 255, 255, 0) calc(var(--ratio) + var(--gap)),
+    rgba(255, 255, 255, 0)
+  );
+}
+
+svg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  z-index: -1;
 }
