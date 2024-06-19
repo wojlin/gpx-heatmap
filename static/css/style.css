@@ -6,13 +6,20 @@
     --water-low: #5c476e;
     --sun: rgb(255, 203, 148);
 
-    --ratio: 0;
-    --gap: 5px;
     --filter: brightness(0.75) hue-rotate(20deg);
+
+    --text: rgba(0,0,0,0.8)
+}
+
+@font-face {
+    font-family: fira;
+    src: url('../fonts/FiraMono-Medium.ttf');
 }
 
 body
 {
+    color: var(--text);
+    font-family: fira;
     overflow: hidden;
     margin: 0;
     padding: 0;
@@ -41,12 +48,12 @@ body
     top:50vh;
     height: 50vh;
     background: linear-gradient(180deg, var(--water-high), var(--water-low));
-    z-index: -1;
+    z-index: 0;
 }
 
 #paralax-2 {
 	width: 20%;
-	z-index: -1;
+	z-index: 2;
 	animation: ducks 120s linear 0s infinite;
 	top: 80vh;
 }
@@ -62,7 +69,7 @@ body
 #paralax-3
 {
     background: url('../images/paralax-3.svg');
-    z-index: -1;
+    z-index: 2;
     width: 70%;
     top:auto;
     left:auto;
@@ -160,48 +167,230 @@ body
     z-index: -6;
 }
 
-
-
-#bg,
-#base,
-#reflect {
+#paralax-reflect 
+{
   content: "";
   display: block;
   position: fixed;
-  top: 0;
+  top: 53vh;
   left: 0;
   width: 100vw;
-  height: 100vh;
-  background-image: url(../images/paralax.png);
+  height: 50vh;
+  background-image: url(../images/mirror.png);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   pointer-events: none;
-}
-#bg {
-  filter: var(--filter);
-}
-#reflect {
+  opacity: 0.3;
   filter: url(#filter) var(--filter);
   transform-origin: center;
-    z-index: 2;
   transform: scale3d(1.1, -1.1, 1);
-}
-#base {
-  mask-image: linear-gradient(
-    to bottom,
-    white,
-    white calc(var(--ratio) - var(--gap)),
-    rgba(255, 255, 255, 0) calc(var(--ratio) + var(--gap)),
-    rgba(255, 255, 255, 0)
-  );
+  z-index: 3;
 }
 
-svg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 0;
-  z-index: -1;
+
+
+#upload
+{
+    font-family: fira;
+    background: rgba(255, 255, 255, 0.11);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10.1px);
+    -webkit-backdrop-filter: blur(10.1px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    position: absolute;
+    top: 50vh;
+    transform: translate(0,-50%);
+    left:0;
+    right:0;
+    margin:auto;
+    width: fit-content;
+    z-index: 10;
+}
+
+
+#upload-title {
+	padding: 1vh;
+	border-bottom: 0.2vh rgba(0,0,0,0.5) solid;
+	background: rgba(217, 217, 217, 0.4);
+	border-top-left-radius: 1vh;
+	border-top-right-radius: 1vh;
+}
+
+#upload-container
+{
+    width: fit-content;
+    height: 2vh;
+    margin:1vh;
+    font-size: 0;
+}
+
+#upload-container-names {
+	font-size: 1.2vh;
+	width: 30ch;
+	display: inline-block;
+	height: 100%;
+	background-color: rgba(217, 217, 217, 0.4);
+	vertical-align: top;
+	margin: 0;
+	border-top-left-radius: 0.5vh;
+	border-bottom-left-radius: 0.5vh;
+	line-height: 2vh;
+	padding-left: 1vh;
+}
+
+#upload-container-browse
+{
+    font-family: fira;
+    color: var(--text);
+    font-size: 1.2vh;
+    width: 10ch;
+    display: inline-block;
+    height: 100%;
+    margin: 0;
+
+    outline: none;
+    border:none;
+    background: white;
+
+    border-left: solid 0.1vh rgba(0,0,0,0.5);
+
+    cursor: pointer;
+
+}
+
+#upload-container-upload
+{
+    font-family: fira;
+    color: var(--text);
+    font-size: 1.2vh;
+    width: 10ch;
+    display: inline-block;
+    height: 100%;
+    margin: 0;
+
+    outline: none;
+    border:none;
+    background: white;
+
+    border-left: solid 0.1vh rgba(0,0,0,0.5);
+
+    border-top-right-radius: 0.5vh;
+    border-bottom-right-radius: 0.5vh;
+
+    cursor: pointer;
+}
+
+#upload-container-browse:hover, #upload-container-upload:hover
+{
+    opacity: 0.8;
+}
+
+#upload-drag
+{
+    width: auto;
+    margin:1vh;
+    padding:2vh;
+    border-style: dashed;
+    border-color: #ccc;
+    line-height: 200px;
+    text-align: center;
+    transition: all 0.2s;
+}
+
+#upload-drag > span
+{ 
+    user-select: none;
+}
+
+#upload-drag.dragover {
+    border-color: #333;
+    color: #333;
+}
+
+#upload-history-title
+{
+    margin-left:1vh;
+}
+
+#upload-history-elements
+{
+    width: auto;
+    margin:1vh;
+    border: solid 0.1vh rgba(0,0,0,0.5);
+    max-height: 15vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+#upload-history-table
+{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#upload-history-table tr
+{
+    background-color: rgba(255, 255, 255, 0.3);
+    border-bottom: 1px solid black;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+}
+
+#upload-history-table td
+{
+    font-size: 1.2vh;
+}
+
+.upload-element-remove
+{
+    background: none;
+    border: none;
+    color:red;
+    padding-right: 1.5vh;
+    cursor: pointer;
+}
+
+#upload-empty
+{
+    display: block;
+    margin: auto;
+    width: 30%;
+}
+#upload-next
+{
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+    
+    margin:auto;
+    display: block;
+    margin-bottom: 1vh;
+    margin-top:1vh;
+    height: 3vh;
+    width: 50%;
+
+    background: white;
+    border: solid 0.3vh rgba(0,0,0,0.5) !important;
+    border-radius: 1vh;
+
+    transition: all 0.2s;
+}
+
+#upload-next:hover
+{
+    opacity: 0.8;
+}
+
+#upload-next:disabled
+{
+    opacity: 1;
+    cursor: inherit;
+    opacity: 0.4;
 }

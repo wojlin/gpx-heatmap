@@ -1,28 +1,82 @@
+<!DOCTYPE html>
 <html>
-    <head>
-        <link rel="stylesheet" href="static/css/style.css"/>
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
-        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-    </head>
-    <body>
-        <div id="paralax-1" class="paralax-element"></div>
-        <img src="static/images/paralax-2.svg" id="paralax-2" class="paralax-element" />
-        <img src="static/images/paralax-3.svg" id="paralax-3" class="paralax-element" />
-        <img src="static/images/paralax-4.svg" id="paralax-4" class="paralax-element" />
-        <img src="static/images/paralax-5.svg" id="paralax-5" class="paralax-element" />
-        <img src="static/images/paralax-6.svg" id="paralax-6" class="paralax-element" />
-        <img src="static/images/paralax-7.svg" id="paralax-7" class="paralax-element" />
-        <div id="paralax-8" class="paralax-element">
-            <div class="paralax-8-sun"></div>
-            <div class="paralax-8-sun"></div>
-            <div class="paralax-8-sun"></div>
-            <div class="paralax-8-sun"></div>
-        </div>
-        <div id="paralax-9" class="paralax-element"></div>
 
-   
-        
-      
-        <script src="static/js/main.js"></script>
-    </body>
+<head>
+  <title>GPX heatmap</title>
+  <link rel="stylesheet" href="static/css/style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+</head>
+
+<body>
+
+  <div id="upload">
+
+    <div id="upload-title">Upload GPX files:</div>
+
+    <div id="upload-container">
+      <div id="upload-container-names"></div>
+      <button id="upload-container-browse" onclick="document.getElementById('upload-input').click();"><span>📁</span><span>Browse</span></button>
+      <button id="upload-container-upload" onclick="main.upload.upload();"><span>⇧</span><span>Upload</span></button>
+    </div>
+
+    <div id="upload-drag">
+      <span>or drag and drop GPX files here</span>
+    </div>
+
+    <div id="upload-history-title">Upload History:</div>
+
+    <div id="upload-history-elements">
+      <table id="upload-history-table">
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+
+    <img id="upload-empty" src="static/images/empty.png" >
+
+    <button id="upload-next" onclick="main.upload.next();" disabled>Next Stage</button>
+
+    <input type="file" id="upload-input" name="upload-input" accept=".gpx" hidden multiple/>
+
+  </div>
+
+  <div id="paralax">
+    <div id="paralax-1" class="paralax-element"></div>
+    <img src="static/images/paralax-2.svg" id="paralax-2" class="paralax-element" />
+    <img src="static/images/paralax-3.svg" id="paralax-3" class="paralax-element" />
+    <img src="static/images/paralax-4.svg" id="paralax-4" class="paralax-element" />
+    <img src="static/images/paralax-5.svg" id="paralax-5" class="paralax-element" />
+    <img src="static/images/paralax-6.svg" id="paralax-6" class="paralax-element" />
+    <img src="static/images/paralax-7.svg" id="paralax-7" class="paralax-element" />
+    <div id="paralax-8" class="paralax-element">
+      <div class="paralax-8-sun"></div>
+      <div class="paralax-8-sun"></div>
+      <div class="paralax-8-sun"></div>
+      <div class="paralax-8-sun"></div>
+    </div>
+    <div id="paralax-9" class="paralax-element"></div>
+    <div id="paralax-reflect"></div>
+
+
+
+    <svg>
+      <filter id="filter" filterUnits="objectBoundingBox" x="0" y="0">
+        <feTurbulence id="feturbulence" type="fractalNoise" baseFrequency="0.01 0.1" numOctaves="10" seed="1">
+        </feTurbulence>
+        <feDisplacementMap xChannelSelector="B" yChannelSelector="G" scale="100" in="SourceGraphic" result="result">
+          <animate attributeName="scale" dur="5s" values="100;-100;100" repeatCount="indefinite" />
+        </feDisplacementMap>
+      </filter>
+    </svg>
+  </div>
+
+  <script src="static/js/upload.js"></script>
+  <script src="static/js/paralax.js"></script>
+  <script src="static/js/main.js"></script>
+
+</body>
+
 </html>
