@@ -18,7 +18,8 @@
 
     <div id="upload-container">
       <div id="upload-container-names"></div>
-      <button id="upload-container-browse" onclick="document.getElementById('upload-input').click();"><span>📁</span><span>Browse</span></button>
+      <button id="upload-container-browse"
+        onclick="document.getElementById('upload-input').click();"><span>📁</span><span>Browse</span></button>
       <button id="upload-container-upload" onclick="main.upload.upload();"><span>⇧</span><span>Upload</span></button>
     </div>
 
@@ -35,12 +36,48 @@
       </table>
     </div>
 
-    <img id="upload-empty" src="static/images/empty.png" >
+    <img id="upload-empty" src="static/images/empty.png">
 
-    <button id="upload-next" onclick="main.upload.next();" disabled>Next Stage</button>
+    <button class="next-stage" id="upload-next" onclick="main.upload.next();" disabled>Next Stage</button>
 
-    <input type="file" id="upload-input" name="upload-input" accept=".gpx" hidden multiple/>
+    <input type="file" id="upload-input" name="upload-input" accept=".gpx" hidden multiple />
 
+  </div>
+
+  <div id="process">
+    <div id="process-title">Choose quality:</div>
+    <div id="form-wrapper">
+      <form action="#" method="GET">
+        <div id="debt-amount-slider">
+          <input type="radio" name="debt-amount" id="1" value="50" required>
+          <label for="1" data-debt-amount="poor"></label>
+          <input type="radio" name="debt-amount" id="2" value="20" required>
+          <label for="2" data-debt-amount="low"></label>
+          <input type="radio" name="debt-amount" id="3" value="10" required>
+          <label for="3" data-debt-amount="medium"></label>
+          <input type="radio" name="debt-amount" id="4" value="2" required>
+          <label for="4" data-debt-amount="high"></label>
+          <input type="radio" name="debt-amount" id="5" value="1" required>
+          <label for="5" data-debt-amount="best"></label>
+          <div id="debt-amount-pos"></div>
+        </div>
+      </form>
+      
+    </div>
+    <div>
+      <p style="margin-top:5vh;text-align:center;">Recomended settings for your PC: <span style="font-weight:bold;" id="process-recomended">medium</span></p>
+      <p class="processs-info ">higher quality will result in greater accuracy of the heatmap, 
+        but it will also increase the time needed for calculations and if 
+        the total amount of data is larger than the available RAM on your computer,
+         it may cause a crash.</p>
+      <p class="processs-info ">  It is recommended that your machine has at least 8GB of RAM</p>
+    </div>
+    <button class="next-stage" id="process-next" onclick="main.process.next();" >Next Stage</button>
+  </div>
+
+  <div id="loading">
+    <p id="loading-text">LOADING</p>
+    <section><span id="spinner"> </span></section>
   </div>
 
   <div id="paralax">
@@ -73,6 +110,8 @@
     </svg>
   </div>
 
+  <script src="static/js/loading.js"></script>
+  <script src="static/js/process.js"></script>
   <script src="static/js/upload.js"></script>
   <script src="static/js/paralax.js"></script>
   <script src="static/js/main.js"></script>

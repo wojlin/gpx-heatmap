@@ -2,6 +2,7 @@ class Upload {
     constructor () {
         this.files = []
         this.localFiles = []
+        this.uploadPanel = document.getElementById("upload")
         this.fileInput = document.getElementById("upload-input");
         this.fileNames = document.getElementById("upload-container-names");
         this.fileTable = document.getElementById("upload-history-table");
@@ -38,6 +39,11 @@ class Upload {
         });
     }
 
+    getFiles()
+    {
+        return this.files;
+    }
+
     handleFiles(files)
     {
         if (files.length > 0) 
@@ -58,7 +64,10 @@ class Upload {
 
     next()
     {
+        this.nextButton.disabled = true;
         main.paralax.scroll(true);
+        this.uploadPanel.classList.add("upload-move");
+        main.process.processPanel.classList.add("process-in");
     }
 
     checkReady()
