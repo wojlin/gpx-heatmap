@@ -768,3 +768,36 @@ form + button:hover:active {
       transform: rotate(-360deg);
     }
   }
+
+
+
+  #map
+  {
+    position: absolute;
+    top: 200vh;
+    width: 100%;
+    height:100vh;
+    margin:0;
+    padding:0;
+    transition: all 4s;
+  }
+
+  #map-canvas
+  {
+    width: 100%;
+    height: 100vh;
+    margin:0;
+    padding:0;
+  }
+
+
+.map-in
+{
+    top:0vh !important;
+}
+
+.map-out
+{
+    top:-100vh !important;
+}
+

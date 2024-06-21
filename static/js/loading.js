@@ -90,5 +90,7 @@ class Loading {
         main.paralax.scroll(true);
         this.loadingPanel.classList.remove("loading-in");
         this.loadingPanel.classList.add("loading-out");
+        main.map.mapPanel.classList.add("map-in")
+        main.map.createMap();
     }
 }

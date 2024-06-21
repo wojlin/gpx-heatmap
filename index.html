@@ -4,10 +4,8 @@
 <head>
   <title>GPX heatmap</title>
   <link rel="stylesheet" href="static/css/style.css" />
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 </head>
 
 <body>
@@ -80,6 +78,10 @@
     <section><span id="spinner"> </span></section>
   </div>
 
+  <div id="map">
+    <div id="map-canvas"></div>
+  </div>
+
   <div id="paralax">
     <div id="paralax-1" class="paralax-element"></div>
     <img src="static/images/paralax-2.svg" id="paralax-2" class="paralax-element" />
@@ -110,6 +112,8 @@
     </svg>
   </div>
 
+  <script src="static/js/heat.js"></script>
+  <script src="static/js/map.js"></script>
   <script src="static/js/loading.js"></script>
   <script src="static/js/process.js"></script>
   <script src="static/js/upload.js"></script>

@@ -2,30 +2,14 @@ class Main
 {
     constructor()
     {
-        this.map = null;
         this.paralax = new Paralax();
         this.upload = new Upload();
         this.process = new Process();
         this.loading = new Loading();
+        this.map = new Map();
  
     }
-
-    createMap()
-    {
-        this.map = L.map('map').setView([51.505, -0.09], 13);
-
-        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', 
-        {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(this.map);
-
-        return this.map;
-    }
-    
 }
-
-
-
 
 class Point
 {
