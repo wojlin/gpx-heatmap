@@ -11,24 +11,4 @@ class Main
     }
 }
 
-class Point
-{
-    constructor(lat, lon)
-    {
-        this.lat = lat;
-        this.lon = lon;
-    }
-
-    get()
-    {
-        return [this.lat, this.lon];
-    }
-}
-
-
 var main = new Main();
-
-
-
-  
-  

@@ -74,7 +74,7 @@ class Loading {
                 {
                     let x = parseFloat(points[pointIndex].getAttribute("lat"));
                     let y = parseFloat(points[pointIndex].getAttribute("lon"));
-                    this.data.push([x, y]);
+                    this.data.push([x, y, 1]);
                     current = 0;
                 }
                 
@@ -82,7 +82,6 @@ class Loading {
         }
 
         this.current++;
-        console.log(this.data)
     }
 
     next()
