@@ -4,8 +4,10 @@
 <head>
   <title>GPX heatmap</title>
   <link rel="stylesheet" href="static/css/style.css" />
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 </head>
 
 <body>
@@ -51,7 +53,7 @@
           <label for="1" data-debt-amount="poor"></label>
           <input type="radio" name="debt-amount" id="2" value="20" required>
           <label for="2" data-debt-amount="low"></label>
-          <input type="radio" name="debt-amount" id="3" value="10" required>
+          <input type="radio" name="debt-amount" id="3" value="10" required checked>
           <label for="3" data-debt-amount="medium"></label>
           <input type="radio" name="debt-amount" id="4" value="2" required>
           <label for="4" data-debt-amount="high"></label>
@@ -60,17 +62,18 @@
           <div id="debt-amount-pos"></div>
         </div>
       </form>
-      
+
     </div>
     <div>
-      <p style="margin-top:5vh;text-align:center;">Recomended settings for your PC: <span style="font-weight:bold;" id="process-recomended">medium</span></p>
-      <p class="processs-info ">higher quality will result in greater accuracy of the heatmap, 
-        but it will also increase the time needed for calculations and if 
+      <p style="margin-top:5vh;text-align:center;">Recomended settings for your PC: <span style="font-weight:bold;"
+          id="process-recomended">medium</span></p>
+      <p class="processs-info ">higher quality will result in greater accuracy of the heatmap,
+        but it will also increase the time needed for calculations and if
         the total amount of data is larger than the available RAM on your computer,
-         it may cause a crash.</p>
-      <p class="processs-info ">  It is recommended that your machine has at least 8GB of RAM</p>
+        it may cause a crash.</p>
+      <p class="processs-info "> It is recommended that your machine has at least 8GB of RAM</p>
     </div>
-    <button class="next-stage" id="process-next" onclick="main.process.next();" >Next Stage</button>
+    <button class="next-stage" id="process-next" onclick="main.process.next();">Next Stage</button>
   </div>
 
   <div id="loading">
@@ -78,7 +81,29 @@
     <section><span id="spinner"> </span></section>
   </div>
 
+
+
   <div id="map">
+    <div id="heatmap-options">
+      <h3>Heat Map Options</h3>
+      <p>heat style:</p>
+      <div>
+        <input oninput="main.map.updateHeatMap();" id="gradient-opacity" name="opacity" type="range" step="0.1" min="0"
+          max="1" value="1" /><label for="opacity">opacity</label>
+      </div>
+      <div>
+        <input oninput="main.map.updateHeatMap();" id="gradient-radius" name="radius" type="range" step="1" min="10"
+          max="100" value="25" /><label for="radius">radius</label>
+      </div>
+      <div>
+        <input oninput="main.map.updateHeatMap();" id="gradient-blur" name="blur" type="range" step="1" min="1" max="50"
+          value="15" /><label for="blur">blur</label>
+      </div>
+      <p>heat gradient:</p>
+      <button class="heatmap-add-color" onclick="gradient.addNewColor();">add new color</button>
+      <div id="heatmap-gradient-container"></div>
+      <div id="heatmap-gradient"></div>
+    </div>
     <div id="map-canvas"></div>
   </div>
 
@@ -119,6 +144,7 @@
   <script src="static/js/upload.js"></script>
   <script src="static/js/paralax.js"></script>
   <script src="static/js/main.js"></script>
+  <script src="static/js/gradient.js"></script>
 
 </body>
 

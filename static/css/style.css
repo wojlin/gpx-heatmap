@@ -801,3 +801,131 @@ form + button:hover:active {
     top:-100vh !important;
 }
 
+
+
+#heatmap-options
+{
+    position: absolute;
+    right:5vh;
+    top:5vh;
+    background: white;
+    border: solid 0.2vh black;
+    border-radius: 1vh;
+    z-index: 1000;
+}
+
+#heatmap-options > div
+{
+    display: flex;
+    margin-left:1vh;
+    margin-right:1vh;
+}
+
+#heatmap-options > h3
+{
+    text-align: center;
+    margin:auto;
+    font-weight: bold;
+    font-size:2vh;
+    margin-top:1vh;
+    margin-bottom: 1vh;
+    opacity: 0.7;
+}
+
+#heatmap-options > p
+{
+    text-align: center;
+    margin:auto;
+    font-weight: bold;
+    font-size:1vh;
+    margin-top:1vh;
+    margin-bottom: 1vh;
+    opacity: 0.9;
+}
+
+#heatmap-options > div > label
+{
+    display: inline;
+    vertical-align: middle;
+    line-height: 3vh;
+    font-size: 1.2vh;
+}
+
+
+
+#heatmap-options > div > input
+{
+}
+
+#heatmap-gradient-container
+{
+    display: block !important;
+}
+
+.heatmap-gradient-panel
+{
+    border: solid 0.2vh black;
+    display: block !important;
+    margin:auto;
+    position: relative;
+}
+
+.heatmap-gradient-panel > div
+{
+    display: flex;
+    margin: 0;
+    height: 3vh;
+}
+
+.heatmap-gradient-panel > div > input
+{
+    width: 50%;
+    margin-left:1vh;
+    margin-top:1vh;
+    margin-bottom: 0;
+    margin-right:0.5vh;
+    height: 2vh;
+
+}
+
+.heatmap-gradient-panel > div > label
+{
+    vertical-align: middle;
+    line-height: 4vh;
+
+}
+
+.heatmap-gradient-remove
+{
+    position: absolute;
+    top:0.5vh;
+    right:0.5vh;
+    width: 2vh;
+    height: 2vh;
+    font-weight: bold;
+    font-size:2vh;
+    line-height: 1vh;
+    border: solid 0.1vh black;
+    border-radius: 100%;
+    outline: none;
+    box-shadow: none;
+}
+
+.heatmap-add-color
+{
+    margin:auto;
+    display: block;
+    margin-bottom:1vh;
+}
+
+#heatmap-gradient
+{
+    width: 80%;
+    margin:auto !important;
+    margin-top: 1vh !important;
+    margin-bottom: 1vh !important;
+    display: block !important;
+    height: 3vh;
+    border:solid black 0.2vh;
+    background: black;
+}

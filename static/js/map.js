@@ -3,6 +3,29 @@ class Map {
     {
         this.map = null;
         this.mapPanel = document.getElementById("map");
+        this.heat = null;
+    }
+
+    getOptions()
+    {
+        let val = gradient.gradient;
+        let options = 
+        {
+            radius: parseFloat(document.getElementById("gradient-radius").value),
+            blur: parseFloat(document.getElementById("gradient-blur").value),
+            minOpacity: parseFloat(document.getElementById("gradient-opacity").value),
+            gradient: val
+        }
+        return options;
+    }
+
+    updateHeatMap()
+    {
+        if(this.heat != null)
+        {
+            let options = this.getOptions();
+            this.heat.setOptions(options);
+        } 
     }
 
     createMap()
@@ -43,10 +66,8 @@ class Map {
         });
 
         let layerControl = L.control.layers(baseMaps).addTo(this.map);
-
-        let gradient = {0.4: 'blue', 0.65: 'lime', 0.80: 'yellow', 0.94: 'orange', 1: 'red'}
-        let options = {radius: 18, max: 1, blur: 15, maxZoom:10, gradient: gradient}
-        let heat = L.heatLayer(main.loading.data, options).addTo(this.map);
+        let options = this.getOptions();
+        this.heat = L.heatLayer(main.loading.data, options).addTo(this.map);
 
         return this.map;
     }
