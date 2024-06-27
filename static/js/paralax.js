@@ -11,6 +11,18 @@ class Paralax {
     }
   }
 
+  returnToStart()
+  {
+    console.log("returning to start")
+    main.map.mapPanel.classList.remove('map-in')
+    main.map.mapPanel.classList.add('map-out')
+    this.reflect.removeAttribute('style');
+    this.panels.forEach(panel => panel.removeAttribute('style'));
+    setTimeout(() => {
+      window.location.reload(); 
+    }, 4500);
+  }
+
   /**
    * The scroll function in JavaScript allows for scrolling forward and backward through different
    * actions based on the current state.

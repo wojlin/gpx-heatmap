@@ -9,6 +9,10 @@ class Main {
     this.process = new Process()
     this.loading = new Loading()
     this.map = new Map()
+
+    window.onload = function() {
+        document.getElementById("upload").classList.add("upload-in")
+      };
   }
 }
 

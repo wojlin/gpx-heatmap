@@ -1,3 +1,8 @@
+/* The above code is defining custom CSS variables using the `:root` pseudo-class. These variables are
+used to store color values for various elements such as sky-high, sky-low, water-high, water-low,
+sun, and text. Additionally, a filter variable is defined to apply brightness and hue-rotate
+effects. These variables can be used throughout the CSS stylesheet to maintain consistency and make
+it easier to update colors across the website. */
 :root {
   --sky-high: #313359;
   --sky-low: #e27137;
@@ -8,6 +13,9 @@
   --text: rgba(0, 0, 0, 0.8);
 }
 
+/* The above code is defining a custom font face in CSS. It is specifying a font family named "fira"
+and providing the source URL for the font file "FiraMono-Medium.ttf" located in the "../fonts/"
+directory. This allows the specified font to be used within the CSS styles of the webpage. */
 @font-face {
   font-family: fira;
   src: url('../fonts/FiraMono-Medium.ttf');
@@ -77,12 +85,12 @@ body {
 }
 
 #paralax-3 {
-  background: url('../images/paralax-3.svg');
-  z-index: 2;
-  width: 70%;
-  top: auto;
-  left: auto;
-  bottom: 47vh;
+	background: url('../images/paralax-3.svg');
+	z-index: 5;
+	width: 70%;
+	top: auto;
+	left: auto;
+	bottom: 47vh;
 }
 
 #paralax-4 {
@@ -200,7 +208,7 @@ body {
   -webkit-backdrop-filter: blur(10.1px);
   border: 1px solid rgba(255, 255, 255, 0.4);
   position: absolute;
-  top: 50vh;
+  top: -50vh;
   transform: translate(0, -50%);
   left: 0;
   right: 0;
@@ -208,6 +216,10 @@ body {
   width: fit-content;
   z-index: 10;
   transition: all 4s;
+}
+
+.upload-in {
+  top: 50vh !important;
 }
 
 .upload-move {
@@ -223,7 +235,6 @@ body {
 }
 
 #upload-container {
-  width: fit-content;
   height: 2vh;
   margin: 1vh;
   font-size: 0;
@@ -231,7 +242,7 @@ body {
 
 #upload-container-names {
   font-size: 1.2vh;
-  width: 30ch;
+  width: 29ch;
   display: inline-block;
   height: 100%;
   background-color: rgba(217, 217, 217, 0.4);
@@ -288,14 +299,14 @@ body {
 }
 
 #upload-drag {
-  width: auto;
-  margin: 1vh;
-  padding: 2vh;
-  border-style: dashed;
-  border-color: #ccc;
-  line-height: 200px;
-  text-align: center;
-  transition: all 0.2s;
+	width: auto;
+	margin: 1vh;
+	padding: 2vh;
+	border-style: dashed;
+	border-color: #ccc;
+	line-height: 15vh;
+	text-align: center;
+	transition: all 0.2s;
 }
 
 #upload-drag>span {
@@ -771,17 +782,17 @@ form+button:hover:active {
 }
 
 .map-out {
-  top: -100vh !important;
+  top: 100vh !important;
 }
 
 #heatmap-options {
-  position: absolute;
-  right: 5vh;
-  top: 5vh;
-  background: white;
-  border: solid 0.2vh black;
-  border-radius: 1vh;
-  z-index: 1000;
+	position: absolute;
+	left: 10px;
+	top: 100px;
+	background: white;
+	border: solid 0.2vh black;
+	border-radius: 1vh;
+	z-index: 1000;
 }
 
 #heatmap-options>div {
@@ -878,4 +889,27 @@ form+button:hover:active {
   height: 3vh;
   border: solid black 0.2vh;
   background: black;
+}
+
+#return-button {
+	background-color: white;
+	color: black;
+	border: solid 4px rgba(0,0,0,0.4);
+	border-radius: 100%;
+	position: absolute;
+	left: 50px;
+	top: 10px;
+	cursor: pointer;
+	opacity: 1;
+	z-index: 1000;
+	width: 60px;
+	height: 60px;
+	text-align: center;
+	font-size: 60px;
+	line-height: 70px;
+}
+
+#return-button:hover
+{
+  opacity: 0.7;
 }
