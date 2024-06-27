@@ -15,7 +15,7 @@ class Gradient
 
     addNewColor(color = "#4287f5", pos= 0)
     {
-        this.panel.innerHTML += `<div class="heatmap-gradient-panel">
+        let s = `<div class="heatmap-gradient-panel">
         <div>
           <input oninput="gradient.updateGradient();" name="color" type="color" value="`+color+`" /><label for="color">color</label>
         </div>
@@ -24,6 +24,11 @@ class Gradient
         </div>
         <button onclick="gradient.removeColor(this)" class="heatmap-gradient-remove">-</button>
         </div>`;
+
+        let temp = document.createElement('div');
+        temp.innerHTML = s;
+        let htmlObject = temp.firstChild;
+        this.panel.appendChild(htmlObject);
 
         this.updateGradient()
     }   
