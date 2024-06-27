@@ -130,7 +130,7 @@ body {
   position: relative;
 }
 
-#paralax-8 > div {
+#paralax-8>div {
   position: absolute;
   left: 0;
   right: 0;
@@ -298,7 +298,7 @@ body {
   transition: all 0.2s;
 }
 
-#upload-drag > span {
+#upload-drag>span {
   user-select: none;
 }
 
@@ -509,37 +509,37 @@ form #debt-amount-slider input {
   display: none;
 }
 
-form #debt-amount-slider input:checked + label::before {
+form #debt-amount-slider input:checked+label::before {
   font-weight: 800;
   opacity: 1;
 }
 
-form #debt-amount-slider input:checked + label::after {
+form #debt-amount-slider input:checked+label::after {
   border-width: 4px;
   transform: translate(-50%, -50%) scale(0.75);
 }
 
-form #debt-amount-slider input:checked ~ #debt-amount-pos {
+form #debt-amount-slider input:checked~#debt-amount-pos {
   opacity: 1;
 }
 
-form #debt-amount-slider input:checked:nth-child(1) ~ #debt-amount-pos {
+form #debt-amount-slider input:checked:nth-child(1)~#debt-amount-pos {
   left: 10%;
 }
 
-form #debt-amount-slider input:checked:nth-child(3) ~ #debt-amount-pos {
+form #debt-amount-slider input:checked:nth-child(3)~#debt-amount-pos {
   left: 30%;
 }
 
-form #debt-amount-slider input:checked:nth-child(5) ~ #debt-amount-pos {
+form #debt-amount-slider input:checked:nth-child(5)~#debt-amount-pos {
   left: 50%;
 }
 
-form #debt-amount-slider input:checked:nth-child(7) ~ #debt-amount-pos {
+form #debt-amount-slider input:checked:nth-child(7)~#debt-amount-pos {
   left: 70%;
 }
 
-form #debt-amount-slider input:checked:nth-child(9) ~ #debt-amount-pos {
+form #debt-amount-slider input:checked:nth-child(9)~#debt-amount-pos {
   left: 90%;
 }
 
@@ -558,17 +558,17 @@ form #debt-amount-slider #debt-amount-pos {
   z-index: 2;
 }
 
-form:valid #debt-amount-slider input + label::before {
+form:valid #debt-amount-slider input+label::before {
   transform: translate(-50%, 45px) scale(0.9);
   transition: all 0.15s linear;
 }
 
-form:valid #debt-amount-slider input:checked + label::before {
+form:valid #debt-amount-slider input:checked+label::before {
   transform: translate(-50%, 45px) scale(1.1);
   transition: all 0.15s linear;
 }
 
-form + button {
+form+button {
   display: block;
   position: relative;
   margin: 56px auto 0;
@@ -591,12 +591,12 @@ form + button {
   cursor: pointer;
 }
 
-form + button:hover {
+form+button:hover {
   background: var(--sky-high);
   color: #fff;
 }
 
-form + button:hover:active {
+form+button:hover:active {
   transform: scale(0.9);
 }
 
@@ -784,13 +784,13 @@ form + button:hover:active {
   z-index: 1000;
 }
 
-#heatmap-options > div {
+#heatmap-options>div {
   display: flex;
   margin-left: 1vh;
   margin-right: 1vh;
 }
 
-#heatmap-options > h3 {
+#heatmap-options>h3 {
   text-align: center;
   margin: auto;
   font-weight: bold;
@@ -800,7 +800,7 @@ form + button:hover:active {
   opacity: 0.7;
 }
 
-#heatmap-options > p {
+#heatmap-options>p {
   text-align: center;
   margin: auto;
   font-weight: bold;
@@ -810,7 +810,7 @@ form + button:hover:active {
   opacity: 0.9;
 }
 
-#heatmap-options > div > label {
+#heatmap-options>div>label {
   display: inline;
   vertical-align: middle;
   line-height: 3vh;
@@ -828,13 +828,13 @@ form + button:hover:active {
   position: relative;
 }
 
-.heatmap-gradient-panel > div {
+.heatmap-gradient-panel>div {
   display: flex;
   margin: 0;
   height: 3vh;
 }
 
-.heatmap-gradient-panel > div > input {
+.heatmap-gradient-panel>div>input {
   width: 50%;
   margin-left: 1vh;
   margin-top: 1vh;
@@ -843,7 +843,7 @@ form + button:hover:active {
   height: 2vh;
 }
 
-.heatmap-gradient-panel > div > label {
+.heatmap-gradient-panel>div>label {
   vertical-align: middle;
   line-height: 4vh;
 }

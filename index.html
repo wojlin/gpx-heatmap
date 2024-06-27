@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>GPX heatmap</title>
+  <title>Track Heat</title>
   <link rel="stylesheet" href="static/css/style.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
@@ -12,6 +12,7 @@
 
 <body>
 
+  <!-- 1. UPLOAD PANEL -->
   <div id="upload">
 
     <div id="upload-title">Upload GPX files:</div>
@@ -44,6 +45,7 @@
 
   </div>
 
+  <!-- 2. PROCESSING PANEL -->
   <div id="process">
     <div id="process-title">Choose quality:</div>
     <div id="form-wrapper">
@@ -76,13 +78,15 @@
     <button class="next-stage" id="process-next" onclick="main.process.next();">Next Stage</button>
   </div>
 
+
+  <!-- 3. LOADING PANEL -->
   <div id="loading">
     <p id="loading-text">LOADING</p>
     <section><span id="spinner"> </span></section>
   </div>
 
 
-
+  <!-- 4. MAP PANEL -->
   <div id="map">
     <div id="heatmap-options">
       <h3>Heat Map Options</h3>
@@ -107,6 +111,7 @@
     <div id="map-canvas"></div>
   </div>
 
+  <!-- BACKGROUND PARALAX -->
   <div id="paralax">
     <div id="paralax-1" class="paralax-element"></div>
     <img src="static/images/paralax-2.svg" id="paralax-2" class="paralax-element" />
@@ -125,7 +130,7 @@
     <div id="paralax-reflect"></div>
 
 
-
+    <!-- BACKGROUND PARALAX WATER EFFECT-->
     <svg>
       <filter id="filter" filterUnits="objectBoundingBox" x="0" y="0">
         <feTurbulence id="feturbulence" type="fractalNoise" baseFrequency="0.01 0.1" numOctaves="10" seed="1">
@@ -137,6 +142,7 @@
     </svg>
   </div>
 
+  <!-- ALL JS INPORTS -->
   <script src="static/js/heat.js"></script>
   <script src="static/js/map.js"></script>
   <script src="static/js/loading.js"></script>
