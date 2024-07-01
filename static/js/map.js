@@ -65,7 +65,7 @@ class Map {
         };
 
         this.map = L.map('map-canvas', {
-            center: [51, 0],
+            center: [51, 10],
             zoom: 5,
             layers: [baseMaps.osm]
         });

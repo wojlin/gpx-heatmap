@@ -64,11 +64,21 @@ class Loading {
    * property and then exits the function without a return statement.
    */
   loadFile (data) {
-    const fileContent = data.substring(32)
-    const binaryData = atob(fileContent)
-    const textData = new TextDecoder().decode(
-      Uint8Array.from(binaryData, c => c.charCodeAt(0))
-    )
+    const fileContent = data.substring(32).trim(); // Trim leading/trailing whitespace
+
+    // Normalize line endings if needed
+    const normalizedContent = fileContent.replace(/\r\n/g, '\n');
+    let textData = ""
+    // Check if content is valid base64 before decoding
+    if (/^[A-Za-z0-9+/]*={0,2}$/.test(normalizedContent)) {
+        const binaryData = atob(normalizedContent);
+        textData = new TextDecoder().decode(Uint8Array.from(binaryData, c => c.charCodeAt(0)));
+
+        // Use textData as needed
+    } else {
+        console.error('Invalid base64 encoded data');
+        // Handle error condition
+    }
 
     const parser = new DOMParser()
     const gpx = parser.parseFromString(textData, 'text/xml')
