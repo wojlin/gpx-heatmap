@@ -14,13 +14,13 @@ class Loading {
    * completion.
    */
   load () {
-    const files = Array.from(main.upload.files)
-    const filePromises = files.map(file => this.readFileAsDataURL(file))
+    const files = Array.from(main.upload.files);
+    const filePromises = files.map(file => this.readFileAsDataURL(file));
 
     Promise.all(filePromises).then(results => {
-      results.forEach(result => this.loadFile(result))
-      this.checkComplete()
-    })
+        results.forEach(result => this.loadFile(result));
+        this.checkComplete();
+    });
   }
 
   /**
@@ -31,14 +31,14 @@ class Loading {
    * the file once it has been read successfully, or rejects with an error if there was a problem
    * reading the file.
    */
-  readFileAsDataURL (file) {
+  readFileAsDataURL(file) {
     return new Promise((resolve, reject) => {
-      const fileReader = new FileReader()
-      fileReader.readAsDataURL(file)
-      fileReader.onload = event => resolve(event.target.result)
-      fileReader.onerror = error => reject(error)
-    })
-  }
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = error => reject(error);
+        reader.readAsDataURL(file);
+    });
+}
 
   /**
    * The function `checkComplete` checks if the current progress is equal to the total number of
@@ -64,11 +64,14 @@ class Loading {
    * property and then exits the function without a return statement.
    */
   loadFile (data) {
-    const fileContent = data.substring(32).trim(); // Trim leading/trailing whitespace
+    const base64Data = data.split(',')[1];
+
+    console.log(base64Data)
 
     // Normalize line endings if needed
-    const normalizedContent = fileContent.replace(/\r\n/g, '\n');
-    let textData = ""
+    const normalizedContent = base64Data.replace(/\r\n/g, '\n');
+
+    let textData = "";
     // Check if content is valid base64 before decoding
     if (/^[A-Za-z0-9+/]*={0,2}$/.test(normalizedContent)) {
         const binaryData = atob(normalizedContent);
