@@ -832,12 +832,7 @@ form+button:hover:active {
   display: block !important;
 }
 
-.heatmap-gradient-panel {
-  border: solid 0.2vh black;
-  display: block !important;
-  margin: auto;
-  position: relative;
-}
+
 
 .heatmap-gradient-panel>div {
   display: flex;
@@ -845,34 +840,11 @@ form+button:hover:active {
   height: 3vh;
 }
 
-.heatmap-gradient-panel>div>input {
-  width: 50%;
-  margin-left: 1vh;
-  margin-top: 1vh;
-  margin-bottom: 0;
-  margin-right: 0.5vh;
-  height: 2vh;
-}
 
-.heatmap-gradient-panel>div>label {
-  vertical-align: middle;
-  line-height: 4vh;
-}
 
-.heatmap-gradient-remove {
-  position: absolute;
-  top: 0.5vh;
-  right: 0.5vh;
-  width: 2vh;
-  height: 2vh;
-  font-weight: bold;
-  font-size: 2vh;
-  line-height: 1vh;
-  border: solid 0.1vh black;
-  border-radius: 100%;
-  outline: none;
-  box-shadow: none;
-}
+
+
+
 
 .heatmap-add-color {
   margin: auto;
@@ -912,4 +884,93 @@ form+button:hover:active {
 #return-button:hover
 {
   opacity: 0.7;
+}
+
+
+
+
+.color-button {
+	position: absolute;
+	left: 0;
+	width: 15%;
+	height: 100% !important;
+	border-top-left-radius: 12px;
+	border-bottom-left-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+
+}
+
+.color-button:hover
+{
+  opacity:0.8;
+}
+
+.heatmap-gradient-panel {
+  border: solid 0.2vh black;
+  border-top-left-radius: 15px;
+	border-bottom-left-radius: 15px;
+  display: block !important;
+  margin: auto;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.heatmap-gradient-panel > div > input {
+	width: 50%;
+	margin-left: 50px;
+	margin-top: 7px;
+	margin-bottom: 0;
+	margin-right: 0.5vh;
+	height: 2vh;
+}
+
+.heatmap-gradient-panel>div>label {
+  vertical-align: middle;
+  line-height: 40px;
+  font-size: 15px;
+}
+
+.heatmap-gradient-remove {
+	position: absolute;
+	right: 0;
+	width: 2vh;
+	height: 100%;
+	font-weight: bold;
+	font-size: 2vh;
+	line-height: 1vh;
+	border: solid 0.1vh black;
+	outline: none;
+	box-shadow: none;
+	top: 0;
+	border-right: none;
+	background: white;
+	border-top: none;
+	border-bottom: none;
+  cursor: pointer;
+  transition: all 0.2s;;
+}
+
+.heatmap-gradient-remove:hover
+{
+  opacity: 0.8;
+  background: black;
+}
+
+.heatmap-buttons
+{
+  width:80%;
+  margin:auto !important;
+  margin-bottom:10px !important;
+  display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.heatmap-buttons > button
+{
+  width:40%;
+  margin:5px;
 }

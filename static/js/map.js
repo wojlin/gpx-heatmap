@@ -6,6 +6,104 @@ class Map {
         this.map = null;
         this.mapPanel = document.getElementById("map");
         this.heat = null;
+        this.loadOptions();
+    }
+
+
+    saveOptions()
+    {
+        localStorage.setItem("save", true);
+        localStorage.setItem("radius", document.getElementById("gradient-radius").value);
+        localStorage.setItem("blur", document.getElementById("gradient-blur").value);
+        localStorage.setItem("opacity", document.getElementById("gradient-opacity").value);
+        
+        let panel = document.getElementById('heatmap-gradient-container')
+        let inputs = panel.getElementsByTagName('input')
+        let gradient = {}
+
+        for (let i = 0; i < inputs.length; i += 2) {
+        if (
+            inputs[i].type === 'color' &&
+            inputs[i + 1] &&
+            inputs[i + 1].type !== 'color'
+        ) {
+            let color = inputs[i].value
+            let position = parseFloat(inputs[i + 1].value) * 100
+            gradient[position] = color
+        }
+        }
+
+        localStorage.setItem("gradient", JSON.stringify(gradient));
+
+        console.log("options saved!")
+    }
+
+    resetOptions()
+    {
+        localStorage.setItem("save", true);
+        localStorage.setItem("gradient", '{"0":"#4287f5","100":"#fa1616","20":"#42f545","80":"#f5ec42","90":"#d6660b"}');
+        localStorage.setItem("radius", 25);
+        localStorage.setItem("blur", 15);
+        localStorage.setItem("opacity", 1);
+
+        document.getElementById("gradient-radius").value = localStorage.getItem('radius');
+        document.getElementById("gradient-blur").value = localStorage.getItem('blur');
+        document.getElementById("gradient-opacity").value = localStorage.getItem('opacity');
+
+        let gradientDict = {"0":"#4287f5","100":"#fa1616","20":"#42f545","80":"#f5ec42","90":"#d6660b"}
+
+        const entries = Object.entries(gradientDict);
+        entries.sort((a, b) => parseFloat(a[1]) - parseFloat(b[1]));
+        gradientDict = Object.fromEntries(entries);
+        gradient.removeAllColors();
+        for (const key in gradientDict) {
+            if (gradientDict.hasOwnProperty(key)) {
+                const value = gradientDict[key];
+                gradient.addNewColor(value, parseFloat(key)/100);
+            }
+        }
+
+        this.updateHeatMap();
+
+        console.log("options reset")
+    }
+
+    loadOptions()
+    {   
+        let isSaved = true;
+
+        if (localStorage.getItem("save") === null) {isSaved = false}
+        
+        if(isSaved)
+        {
+            console.log("loading saved options")
+            document.getElementById("gradient-radius").value = localStorage.getItem('radius');
+            document.getElementById("gradient-blur").value = localStorage.getItem('blur');
+            document.getElementById("gradient-opacity").value = localStorage.getItem('opacity');
+
+            let di = JSON.parse(localStorage.getItem('gradient'))
+
+            const entries = Object.entries(di);
+            entries.sort((a, b) => parseFloat(a[1]) - parseFloat(b[1]));
+            let gradientDict = Object.fromEntries(entries);
+            gradient.removeAllColors();
+            for (const key in gradientDict) {
+                if (gradientDict.hasOwnProperty(key)) {
+                    const value = gradientDict[key];
+                    gradient.addNewColor(value, parseFloat(key)/100);
+                }
+            }
+            
+        }
+        else
+        {
+            console.warn("no save detected!")
+        }
+
+
+        
+
+        this.updateHeatMap();
     }
 
     /**

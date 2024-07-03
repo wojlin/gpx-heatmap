@@ -97,7 +97,7 @@
           max="1" value="1" /><label for="opacity">opacity</label>
       </div>
       <div>
-        <input oninput="main.map.updateHeatMap();" id="gradient-radius" name="radius" type="range" step="1" min="10"
+        <input oninput="main.map.updateHeatMap();" id="gradient-radius" name="radius" type="range" step="1" min="1"
           max="100" value="25" /><label for="radius">radius</label>
       </div>
       <div>
@@ -108,6 +108,10 @@
       <button class="heatmap-add-color" onclick="gradient.addNewColor();">add new color</button>
       <div id="heatmap-gradient-container"></div>
       <div id="heatmap-gradient"></div>
+      <div class="heatmap-buttons">
+        <button onclick="main.map.saveOptions();">save</button>
+        <button style="float:right;" onclick="main.map.resetOptions();">reset</button>
+      </div>
     </div>
     <div id="map-canvas"></div>
   </div>
@@ -144,6 +148,7 @@
   </div>
 
   <!-- ALL JS INPORTS -->
+  <script src="static/js/gradient.js"></script>
   <script src="static/js/heat.js"></script>
   <script src="static/js/map.js"></script>
   <script src="static/js/loading.js"></script>
@@ -151,7 +156,7 @@
   <script src="static/js/upload.js"></script>
   <script src="static/js/paralax.js"></script>
   <script src="static/js/main.js"></script>
-  <script src="static/js/gradient.js"></script>
+  
 
 </body>
 

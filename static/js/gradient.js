@@ -28,13 +28,12 @@ class Gradient {
   addNewColor (color = '#4287f5', pos = 0) {
     const newColorHTML = `
     <div class="heatmap-gradient-panel">
-      <div>
-        <input oninput="gradient.updateGradient();" name="color" type="color" value="${color}" />
-        <label for="color">color</label>
-      </div>
+      <div style="background:${color}; box-shadow: 0px 0px 5px 5px ${color};" class="color-button" onclick="this.children[0].click();">
+        <input oninput="gradient.updateGradient();this.parentNode.style.background = this.value;this.parentNode.style.boxShadow = '0px 0px 5px 5px ' +this.value; " name="color" type="color" value="${color}" hidden/>
+      </div> 
       <div>
         <input oninput="gradient.updateGradient();" name="color-pos" type="range" step="0.05" min="0" max="1" value="${pos}" />
-        <label for="color-pos">position</label>
+        <label for="color-pos">%</label>
       </div>
       <button onclick="gradient.removeColor(this)" class="heatmap-gradient-remove">-</button>
     </div>`
@@ -43,6 +42,12 @@ class Gradient {
     temp.innerHTML = newColorHTML
     this.panel.appendChild(temp.firstElementChild)
     this.updateGradient()
+  }
+
+  removeAllColors()
+  {
+    this.panel.innerHTML = "";
+    this.gradient = {};
   }
 
   /**
@@ -69,7 +74,12 @@ class Gradient {
 
     css = css.slice(0, -1) + ')'
     this.gradientPanel.style.background = css
-    main.map.updateHeatMap()
+    try
+    {
+      main.map.updateHeatMap()
+    }
+    catch{}
+    
   }
 
   /**
